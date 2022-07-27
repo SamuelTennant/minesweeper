@@ -19,20 +19,13 @@ export default class Cell {
     this._cellElement.addEventListener('click', (e) => {
       e.preventDefault();
 
-      // Do some checks and reveal.
+      this.reveal();
     });
 
     this._cellElement.addEventListener('contextmenu', (e) => {
       e.preventDefault();
 
-      // Flag or unflag.
-      if (this._isFlagged) {
-        this._isFlagged = false;
-        this._cellElement.classList.remove('flagged');
-      } else {
-        this._isFlagged = true;
-        this._cellElement.classList.add('flagged');
-      }
+      this.toggleFlagged();
     });
 
     GameManager.gameContainerElement.appendChild(this._cellElement);
@@ -41,5 +34,27 @@ export default class Cell {
   public cleanup() {
     // Remove cell from DOM.
     this._cellElement.remove();
+  }
+
+  public toggleFlagged() {
+    this._isFlagged = !this._isFlagged;
+    this._cellElement.classList.toggle('flagged');
+  }
+
+  public reveal() {
+    this._isRevealed = true;
+    if (this._isFlagged) this.toggleFlagged();
+
+    if (this._isMine) {
+      this._cellElement.classList.add('revealed-mine');
+
+      // End game.
+      setTimeout(() => {
+        alert('Game over!');
+        GameManager.getInstance().startGame(10);
+      }, 2000);
+    } else {
+      this._cellElement.classList.add('revealed-not-mine');
+    }
   }
 }

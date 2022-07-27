@@ -6,9 +6,13 @@
   --color-primary-dark: #8e44ad;
   --color-secondary: #e67e22;
   --color-secondary-dark: #d35400;
+  --color-danger: #e74c3c;
+  --color-danger-dark: #c0392b;
   --color-background: #2c3e50;
   --color-light: #ecf0f1;
   --color-light-dark: #bdc3c7;
+  --color-dark: #95a5a6;
+  --color-dark-dark: #7f8c8d;
 }
 
 body {
@@ -66,4 +70,20 @@ h1 {
 
 .flagged:hover {
   background: var(--color-primary-dark);
+}
+
+.revealed-not-mine {
+  background: var(--color-dark);
+}
+
+.revealed-not-mine:hover {
+  background: var(--color-dark-dark);
+}
+
+.revealed-mine {
+  background: var(--color-danger);
+}
+
+.revealed-mine:hover {
+  background: var(--color-danger-dark);
 }
