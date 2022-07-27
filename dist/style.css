@@ -1,4 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+* {
+  /* Variables */
+  --color-primary: #9b59b6;
+  --color-primary-dark: #8e44ad;
+  --color-secondary: #e67e22;
+  --color-secondary-dark: #d35400;
+  --color-background: #2c3e50;
+  --color-light: #ecf0f1;
+}
+
 body {
   padding: 0;
   margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-light);
+  font-family: 'Roboto Mono', monospace;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Game */
+
+.game-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+/* TODO: TEMPORARY */
+.cell {
+  width: 10px;
+  height: 10px;
+  background: white;
 }
