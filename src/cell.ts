@@ -15,6 +15,25 @@ export default class Cell {
     const cellElement = document.createElement('div');
     cellElement.classList.add('cell');
 
+    cellElement.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Do some checks and reveal.
+    });
+
+    cellElement.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+
+      // Flag or unflag.
+      if (this._isFlagged) {
+        this._isFlagged = false;
+        cellElement.classList.remove('flagged');
+      } else {
+        this._isFlagged = true;
+        cellElement.classList.add('flagged');
+      }
+    });
+
     GameManager.gameContainerElement.appendChild(cellElement);
   }
 }

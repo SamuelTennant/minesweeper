@@ -8,6 +8,7 @@
   --color-secondary-dark: #d35400;
   --color-background: #2c3e50;
   --color-light: #ecf0f1;
+  --color-light-dark: #bdc3c7;
 }
 
 body {
@@ -41,14 +42,28 @@ h1 {
   display: grid;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 1%;
   width: 70vh;
   height: 70vh;
 }
 
 .cell {
+  transition-duration: 150ms;
   border-radius: 10%;
   width: 100%;
   height: 100%;
   background: white;
+}
+
+.cell:hover {
+  cursor: pointer;
+  background: var(--color-light-dark);
+}
+
+.flagged {
+  background: var(--color-primary);
+}
+
+.flagged:hover {
+  background: var(--color-primary-dark);
 }
