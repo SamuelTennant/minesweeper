@@ -21,6 +21,8 @@ export default class GameManager {
   }
 
   public startGame(gridSize: number) {
+    // If grid already exists, delete nodes.
+
     this._grid = new Grid(gridSize);
     GameManager.gameContainerElement.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
     GameManager.gameContainerElement.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;

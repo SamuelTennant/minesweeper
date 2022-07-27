@@ -14,4 +14,11 @@ export default class Grid {
       }
     }
   }
+
+  // Reset grid for new game.
+  public cleanup() {
+    this._cells.forEach((cell) => {
+      cell.cleanup();
+    });
+  }
 }
