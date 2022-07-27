@@ -18,13 +18,11 @@ export default class Cell {
 
     this._cellElement.addEventListener('click', (e) => {
       e.preventDefault();
-
       this.reveal();
     });
 
     this._cellElement.addEventListener('contextmenu', (e) => {
       e.preventDefault();
-
       this.toggleFlagged();
     });
 
