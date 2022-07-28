@@ -1,15 +1,13 @@
-import Grid from './grid';
+import Grid from "./grid";
 
 export default class GameManager {
-  public static gameContainerElement: HTMLElement;
-
   private static _instance: GameManager;
 
-  private _grid: Grid;
+  public gameContainerElement: HTMLElement;
+  public grid: Grid;
 
   private constructor() {
-    GameManager.gameContainerElement =
-      document.getElementById('game-container')!;
+    this.gameContainerElement = document.getElementById("game-container")!;
   }
 
   public static getInstance(): GameManager {
@@ -22,12 +20,13 @@ export default class GameManager {
 
   public startGame(gridSize: number) {
     // If grid already exists, delete nodes.
-    if (this._grid) {
-      this._grid.cleanup();
+    if (this.grid) {
+      this.grid.cleanup();
     }
 
-    this._grid = new Grid(gridSize);
-    GameManager.gameContainerElement.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
-    GameManager.gameContainerElement.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    this.grid = new Grid(gridSize);
+    this.grid.calculateNeighbourMineCounts();
+    this.gameContainerElement.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+    this.gameContainerElement.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
   }
 }

@@ -1,4 +1,4 @@
-import Cell from './cell';
+import Cell from "./cell";
 
 export default class Grid {
   private readonly _sideLength: number = 10;
@@ -20,5 +20,15 @@ export default class Grid {
     this._cells.forEach((cell) => {
       cell.cleanup();
     });
+  }
+
+  public calculateNeighbourMineCounts() {
+    this._cells.forEach((cell) => {
+      cell.calculateNeighbourMineCount();
+    });
+  }
+
+  public getCell(x: number, y: number): Cell | null {
+    return this._cells[x * this._sideLength + y];
   }
 }
