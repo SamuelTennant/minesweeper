@@ -39,8 +39,8 @@ export default class Cell {
       this.cellElement
     );
 
-    // TEMPORARY: 20% chance of being a mine.
-    this.isMine = Math.random() < 0.2;
+    // 30% chance of being a mine.
+    this.isMine = Math.random() < 0.3;
   }
 
   public cleanup() {
@@ -63,8 +63,7 @@ export default class Cell {
     // Call recursively.
     const neighbours = this.getNonDiagonalNeighbours();
     neighbours.forEach((cell) => {
-      if (!cell.isMine && !cell.isRevealed && cell.neighbourMineCount != 0)
-        cell.reveal();
+      if (!cell.isMine && !cell.isRevealed) cell.reveal();
     });
 
     if (this.isMine) {
